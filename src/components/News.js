@@ -49,15 +49,16 @@ export default class News extends Component {
             <div className='container'>
             <div className="row">
 
-              {this.state.articles.map((elem) => {
+              {!this.state.loading && this.state.articles.map((elem) => {
                 return <div className="col-md-4" key={elem.url}>
-                  {<NewsItem imageUrl={elem.urlToImage ? elem.urlToImage : "https://st.depositphotos.com/1006899/3776/i/950/depositphotos_37765339-stock-photo-news.jpg"} title={elem.title} desc={elem["description"]} url={elem.url}
+                  {<NewsItem imageUrl={ elem.urlToImage ? elem.urlToImage : "https://st.depositphotos.com/1006899/3776/i/950/depositphotos_37765339-stock-photo-news.jpg"} title={elem.title} desc={elem["description"]} url={elem.url}
                     date={elem.publishedAt} author={elem.author} />}
                 </div>
               })}
             </div>
             </div>
-          </InfiniteScroll>
+              </InfiniteScroll>
+          
 
           {/* <div className="container my-3 d-flex justify-content-between">
             <button disabled={this.state.page < 2} type="button" className="btn btn-primary" onClick={() => { this.handlePrevClick() }}>Previous</button>
